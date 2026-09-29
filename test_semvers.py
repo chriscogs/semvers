@@ -1,6 +1,6 @@
 import unittest
 
-from semvers import parse_version, sort_versions
+from semvers import latest_version, parse_version, sort_versions
 
 
 class SemversTest(unittest.TestCase):
@@ -10,6 +10,11 @@ class SemversTest(unittest.TestCase):
             sort_versions(["1.10.0", "1.2.0", "1.2.0-rc.1"]),
             ["1.2.0-rc.1", "1.2.0", "1.10.0"],
         )
+
+    def test_latest(self) -> None:
+        self.assertEqual(latest_version(["1.2.0", "1.10.0", "1.2.0-rc.1"]), "1.10.0")
+        with self.assertRaises(ValueError):
+            latest_version([])
 
     def test_reject(self) -> None:
         with self.assertRaises(ValueError):
