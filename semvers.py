@@ -58,3 +58,9 @@ def parse_version(text: str) -> Version:
 
 def sort_versions(items: list[str]) -> list[str]:
     return sorted(items, key=parse_version)
+
+
+def latest_version(items: list[str]) -> str:
+    if not items:
+        raise ValueError("没有版本")
+    return max(items, key=parse_version)
