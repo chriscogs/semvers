@@ -60,6 +60,10 @@ def sort_versions(items: list[str]) -> list[str]:
     return sorted(items, key=parse_version)
 
 
+def is_prerelease(text: str) -> bool:
+    return bool(parse_version(text).pre)
+
+
 def latest_version(items: list[str]) -> str:
     if not items:
         raise ValueError("没有版本")
