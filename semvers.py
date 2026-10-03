@@ -64,6 +64,11 @@ def is_prerelease(text: str) -> bool:
     return bool(parse_version(text).pre)
 
 
+def release_of(text: str) -> str:
+    parsed = parse_version(text)
+    return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
+
+
 def latest_version(items: list[str]) -> str:
     if not items:
         raise ValueError("没有版本")
