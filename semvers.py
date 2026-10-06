@@ -64,6 +64,10 @@ def is_prerelease(text: str) -> bool:
     return bool(parse_version(text).pre)
 
 
+def same_release(left: str, right: str) -> bool:
+    return release_of(left) == release_of(right)
+
+
 def release_of(text: str) -> str:
     parsed = parse_version(text)
     return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
