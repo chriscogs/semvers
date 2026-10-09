@@ -68,6 +68,10 @@ def same_release(left: str, right: str) -> bool:
     return release_of(left) == release_of(right)
 
 
+def older(left: str, right: str) -> bool:
+    return parse_version(left) < parse_version(right)
+
+
 def release_of(text: str) -> str:
     parsed = parse_version(text)
     return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
