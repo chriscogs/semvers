@@ -1,6 +1,6 @@
 import unittest
 
-from semvers import is_prerelease, latest_version, parse_version, release_of, same_release, sort_versions
+from semvers import is_prerelease, latest_version, older, parse_version, release_of, same_release, sort_versions
 
 
 class SemversTest(unittest.TestCase):
@@ -18,6 +18,8 @@ class SemversTest(unittest.TestCase):
         self.assertEqual(release_of("1.2.0-rc.1"), "1.2.0")
         self.assertTrue(same_release("1.2.0-rc.1", "1.2.0"))
         self.assertFalse(same_release("1.2.0", "1.3.0"))
+        self.assertTrue(older("1.2.0", "1.10.0"))
+        self.assertFalse(older("1.2.0", "1.2.0-rc.1"))
         with self.assertRaises(ValueError):
             latest_version([])
 
