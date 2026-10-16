@@ -80,6 +80,10 @@ def same_version(left: str, right: str) -> bool:
     return parse_version(left) == parse_version(right)
 
 
+def stable_versions(items: list[str]) -> list[str]:
+    return [item for item in items if not is_prerelease(item)]
+
+
 def release_of(text: str) -> str:
     parsed = parse_version(text)
     return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
