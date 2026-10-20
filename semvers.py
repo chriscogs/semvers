@@ -84,6 +84,10 @@ def stable_versions(items: list[str]) -> list[str]:
     return [item for item in items if not is_prerelease(item)]
 
 
+def major_of(text: str) -> int:
+    return parse_version(text).major
+
+
 def release_of(text: str) -> str:
     parsed = parse_version(text)
     return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
