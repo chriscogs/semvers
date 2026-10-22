@@ -88,6 +88,10 @@ def major_of(text: str) -> int:
     return parse_version(text).major
 
 
+def minor_of(text: str) -> int:
+    return parse_version(text).minor
+
+
 def release_of(text: str) -> str:
     parsed = parse_version(text)
     return f"{parsed.major}.{parsed.minor}.{parsed.patch}"
