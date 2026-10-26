@@ -1,6 +1,6 @@
 import unittest
 
-from semvers import is_prerelease, latest_version, major_of, minor_of, newer, older, parse_version, release_of, same_release, same_version, sort_versions, stable_versions
+from semvers import is_prerelease, latest_version, major_of, minor_of, newer, older, parse_version, patch_of, release_of, same_release, same_version, sort_versions, stable_versions
 
 
 class SemversTest(unittest.TestCase):
@@ -28,6 +28,7 @@ class SemversTest(unittest.TestCase):
         self.assertEqual(major_of("1.10.0"), 1)
         self.assertEqual(major_of("2.0.0-rc.1"), 2)
         self.assertEqual(minor_of("1.10.0"), 10)
+        self.assertEqual(patch_of("1.2.9"), 9)
         with self.assertRaises(ValueError):
             latest_version([])
 
