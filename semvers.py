@@ -105,3 +105,6 @@ def latest_version(items: list[str]) -> str:
     if not items:
         raise ValueError("没有版本")
     return max(items, key=parse_version)
+
+def same_minor(left: str, right: str) -> bool:
+    return minor_of(left) == minor_of(right)
