@@ -108,3 +108,7 @@ def latest_version(items: list[str]) -> str:
 
 def same_minor(left: str, right: str) -> bool:
     return minor_of(left) == minor_of(right)
+
+def zero_version(text: str) -> bool:
+    parsed = parse_version(text)
+    return parsed.major == 0 and parsed.minor == 0 and parsed.patch == 0
